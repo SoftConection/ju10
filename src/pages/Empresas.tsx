@@ -34,7 +34,7 @@ const PLANS: Plan[] = [
     id: 'starter',
     name: 'Starter',
     description: 'Para empresas que estão começando no marketing digital.',
-    price: 'R$ 1.997',
+    price: 'Kz 1.997',
     priceNote: '/mês',
     features: [
       'Diagnóstico inicial completo',
@@ -50,7 +50,7 @@ const PLANS: Plan[] = [
     id: 'growth',
     name: 'Growth',
     description: 'Para empresas em crescimento que precisam escalar.',
-    price: 'R$ 3.997',
+    price: 'Kz 3.997',
     priceNote: '/mês',
     features: [
       'Tudo do plano Starter',
