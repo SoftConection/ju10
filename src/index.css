@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* JU10 - Juventude 10 Design System
+   Brand Color: Vibrant Orange (#F84D00)
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* JU10 Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary - JU10 Orange */
+    --primary: 18 100% 49%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light Orange Tint */
+    --secondary: 18 100% 97%;
+    --secondary-foreground: 18 100% 35%;
+
+    /* Muted - Warm Gray */
+    --muted: 20 10% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - Warm Accent */
+    --accent: 18 100% 95%;
+    --accent-foreground: 18 100% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 10% 90%;
+    --input: 20 10% 90%;
+    --ring: 18 100% 49%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 18 100% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 18 100% 95%;
+    --sidebar-accent-foreground: 18 100% 35%;
+    --sidebar-border: 20 10% 92%;
+    --sidebar-ring: 18 100% 49%;
+
+    /* Custom JU10 Tokens */
+    --ju10-orange: 18 100% 49%;
+    --ju10-orange-light: 18 100% 95%;
+    --ju10-orange-dark: 18 100% 40%;
+    --ju10-dark: 0 0% 10%;
+    --ju10-gray: 0 0% 45%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Primary - JU10 Orange */
+    --primary: 18 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 18 100% 20%;
+    --accent-foreground: 18 100% 70%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 18 100% 55%;
+
+    /* Sidebar Dark */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 18 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 18 100% 55%;
+
+    /* Custom JU10 Tokens Dark */
+    --ju10-orange: 18 100% 55%;
+    --ju10-orange-light: 18 100% 20%;
+    --ju10-orange-dark: 18 100% 70%;
+    --ju10-dark: 0 0% 95%;
+    --ju10-gray: 0 0% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  /* Navbar backdrop blur on scroll */
+  .navbar-blur {
+    @apply bg-background/80 backdrop-blur-lg shadow-lg shadow-background/10;
+  }
+
+  /* JU10 Button Styles */
+  .btn-ju10 {
+    @apply bg-primary text-primary-foreground font-semibold py-3 px-6 
+           transition-all duration-300 ease-out
+           hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25
+           active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ju10-outline {
+    @apply border-2 border-primary text-primary bg-transparent
+           font-semibold py-3 px-6 transition-all duration-300 ease-out
+           hover:bg-primary hover:text-primary-foreground
+           active:scale-[0.98];
+  }
+
+  .btn-ju10-dark {
+    @apply bg-foreground text-background font-semibold py-3 px-6
+           transition-all duration-300 ease-out
+           hover:bg-foreground/90 hover:shadow-lg
+           active:scale-[0.98];
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out
+           hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1;
+  }
+
+  /* Gradient text */
+  .text-gradient-ju10 {
+    @apply bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent;
+  }
+
+  /* Link hover effect */
+  .link-ju10 {
+    @apply relative inline-block text-foreground transition-colors duration-300
+           hover:text-primary;
+  }
+
+  .link-ju10::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary
+           transition-all duration-300 ease-out;
+  }
+
+  .link-ju10:hover::after {
+    @apply w-full;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Animation delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Premium shadows */
+  .shadow-premium {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-premium-lg {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-primary-intense {
+    box-shadow: 0 0 60px hsl(var(--primary) / 0.5);
+  }
+
+  /* Text shadows */
+  .text-shadow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  /* Smooth image loading */
+  .image-loading {
+    @apply bg-muted animate-pulse;
+  }
+
+  /* Premium border */
+  .border-premium {
+    border: 1px solid transparent;
+    background: 
+      linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(135deg, hsl(var(--primary) / 0.2), transparent 50%, hsl(var(--primary) / 0.2)) border-box;
+  }
+}
